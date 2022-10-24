@@ -6,7 +6,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class GameApp extends Application {
-
+    // The GameApp class sets up all keyboard event handlers
+    // to invoke public methods in Game.
     private static final int APP_WIDTH = 400;
     private static final int APP_HEIGHT = 800;
 
@@ -26,4 +27,14 @@ public class GameApp extends Application {
 
     }
 }
+
+
+
+class Game extends Pane {
+    //all game logic and object construction belong here
+
+
+}
+
+
 
