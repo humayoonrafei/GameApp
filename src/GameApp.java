@@ -6,9 +6,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 
+
+import java.awt.*;
 
 import static javafx.scene.paint.Color.MAGENTA;
 import static javafx.scene.paint.Color.WHITE;
@@ -40,6 +43,14 @@ public class GameApp extends Application {
         primaryStage.setTitle("GameAPP");
         scene.setFill(Color.BLACK);
 
+        // THe Helipad is below
+        double Helipad_Height = 30;
+        double Helipad_Width = 40 ;
+        Rectangle Helipad = new Rectangle(Helipad_Width,Helipad_Height);
+        Helipad.setStroke(Color.GRAY);
+        Helipad.setX(((APP_WIDTH-Helipad_Height)/2));
+        Helipad.setY(APP_HEIGHT-Helipad_Height);
+        root.getChildren().add(Helipad);
 
         primaryStage.show();
 
@@ -82,17 +93,19 @@ class GameObject extends Group{
 class cloud extends GameApp{
     // represents a cloud in the sky
 
-    Circle cloudCircle = new Circle(6,WHITE);// Todo Add it as childern to the root
+    Circle cloudCircle = new Circle(6, Color.DARKGRAY);// Todo Add it as childern to the root
     //groot.addchildern(cloudcircle)
 
 }
 
 class Helipad {
     // Represents the starting and ending location for Helicopter
-    Rectangle rectangle = new Rectangle(23,34);
-   // rectangle.setStroke(COLOR.GRAY);
+
+
+    Rectangle rectangle = new Rectangle(23, 34);
 
 }
+
 
 class Helicopter {
     // most complex game object
