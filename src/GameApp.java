@@ -101,7 +101,6 @@ class cloud extends GameApp{
 class Helipad {
     // Represents the starting and ending location for Helicopter
 
-
     Rectangle rectangle = new Rectangle(23, 34);
 
 }
