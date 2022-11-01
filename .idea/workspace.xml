@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb197409-8108-47c9-aad4-bf0f5e0ed5e6" name="Changes" comment="Helipad created and located at the bottom centered in the miidle">
+    <list default="true" id="bb197409-8108-47c9-aad4-bf0f5e0ed5e6" name="Changes" comment="updating classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +89,21 @@
       <option name="project" value="LOCAL" />
       <updated>1666926989455</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Creating classes and analyzing each class watching the video on udemy for classes">
+      <created>1667024692557</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1667024692557</updated>
+    </task>
+    <task id="LOCAL-00006" summary="updating classes">
+      <created>1667111903452</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1667111903452</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,6 +122,8 @@
     <MESSAGE value="recombined classes in on file" />
     <MESSAGE value="THe classes are created" />
     <MESSAGE value="Helipad created and located at the bottom centered in the miidle" />
-    <option name="LAST_COMMIT_MESSAGE" value="Helipad created and located at the bottom centered in the miidle" />
+    <MESSAGE value="Creating classes and analyzing each class watching the video on udemy for classes" />
+    <MESSAGE value="updating classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating classes" />
   </component>
 </project>
