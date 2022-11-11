@@ -26,10 +26,19 @@ import static javafx.scene.paint.Color.*;
 //All code is neat and properly indented
 //You are restricted to an 80-character width
 public class GameApp extends Application {
+    public int getAPP_WIDTH() {
+        return APP_WIDTH;
+    }
+
     // The GameApp class sets up all keyboard event handlers
     // to invoke public methods in Game.
-    private static final int APP_WIDTH = 400;
-    private static final int APP_HEIGHT = 600;
+    private  int APP_WIDTH = 400;
+
+    public int getAPP_HEIGHT() {
+        return APP_HEIGHT;
+    }
+
+    private   int APP_HEIGHT = 600;
 
 
     private Game Ng;
@@ -116,21 +125,9 @@ class Helipad extends Node {
         rectSize = 45;
         arcSize = 250;
         Rectangle Helipad = new Rectangle(Helipad_Width, Helipad_Height);
-        Helipad.setX(((APP_WIDTH - Helipad_Height) / 2));
-        Helipad.setY(APP_HEIGHT - Helipad_Height);
+        Helipad.setX(((getAPP_HEIGHT() - Helipad_Width) / 2));
+        Helipad.setY(GameApp.APP_HEIGHT - Helipad_Height);
         rec_location = null;
-    }
-
-    @Override
-    public Node getStyleableNode() {
-        return super.getStyleableNode();
-        public Point getArcLocation () {
-            return arc_location;
-        }
-
-        public int getArcSize () {
-            return arcSize;
-        }
     }
 
 
@@ -189,7 +186,7 @@ class Helipad extends Node {
 //
 //}
 
-    class Helipad {
+    class Helipad extends GameApp {
         final private Point rec_location;
         final private Point arc_location;
         final private int rectSize;
@@ -199,10 +196,10 @@ class Helipad extends Node {
             rectSize = 300;
             arcSize = 250;
             rec_location = new Point(GameApp.APP_WIDTH/ 2 - rectSize / 2,
-                    GameAPP.APP_HEIGHT - rectSize - rectSize / 2);
+                    super.APP_HEIGHT - rectSize - rectSize / 2);
 
             arc_location = new Point( GameApp.APP_WIDTH- arcSize / 2,
-                    Game.GameAPP.APP_HEIGHT - 425);
+                    super.APP_HEIGHT - 425);
         }
 
         void draw(Graphics g) {
