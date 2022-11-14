@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb197409-8108-47c9-aad4-bf0f5e0ed5e6" name="Changes" comment="Still working on helicopter">
+    <list default="true" id="bb197409-8108-47c9-aad4-bf0f5e0ed5e6" name="Changes" comment="Refactored the Helicopter class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -138,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668233419168</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Refactored the Helicopter class">
+      <created>1668269013884</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1668269013884</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -164,6 +171,7 @@
     <MESSAGE value="helicopter class written still needs to be completed" />
     <MESSAGE value="Managing Helicopter" />
     <MESSAGE value="Still working on helicopter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Still working on helicopter" />
+    <MESSAGE value="Refactored the Helicopter class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored the Helicopter class" />
   </component>
 </project>
