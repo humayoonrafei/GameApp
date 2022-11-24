@@ -26,6 +26,15 @@ import static javafx.scene.paint.Color.*;
 //Constant identifiers use upper snake case
 //All code is neat and properly indented
 //You are restricted to an 80-character width
+
+
+/******
+//Class GameApp*/
+// At the highest level we have the class GameApp.
+// This class extends the JavaFX Application class.
+// The purpose of this class is to manage the high-level aspects of our application and setup and show the initial Scene for your application.
+// The GameApp class sets up all keyboard event handlers to invoke public methods in Game.
+/*******/
 public class GameApp extends Application {
 
     private Game Ng;
@@ -51,7 +60,18 @@ public class GameApp extends Application {
 
     }
 }
-
+//Class Game
+//
+//For this first version all game logic and object construction belong in the Game class.
+// All of the rules in our game are implemented in the Game.
+// This class holds the state of the game and determines win/lose conditions and instantiates and links the other Game Objects.
+// The Game does not know anything about where user input comes from or how it is generated.
+// The Game class extends the JavaFX class Pane. This allows the Game class to be the container for all game objects.
+// For this version of the game we will not have a separate game object collection. This may change in a future revision.
+//At this stage we are not overly concerned that we are purely and
+// properly implementing any particular application pattern, e.g., MVC. We do, however, want to start thinking about separation of concerns.
+//The interaction of these classes is discussed further later in the document.
+//
 
 
 class Game extends Pane {
@@ -90,6 +110,23 @@ class Game extends Pane {
 
 }
 
+
+
+//Game Object Classes
+//In addition to the classes described above you will have some additional classes that represent game objects.
+// In this version of this project, you will build a simple hierarchy of game objects.
+// Because we want to inherit the properties of JavaFX Node objects, our game object class will extend the JavaFX Group class.
+// This alleviates us from having to setup a number of different properties that each object needs, for example, the object’s location in the world.
+//Later in this document I will discuss the basics of object behaviors and private data, but for now,
+// let’s jump into the various classes that will represent the game objects.
+
+//Class GameObject
+
+//The abstract GameObject class is the base of our object hierarchy.
+// It contains methods and fields that manage the common aspects of all game objects in our program.
+// Any state or behavior in this class should apply to all game object this. For example, the helicopter can move, while a pond cannot.
+// Consequently, you would not include anything regarding movement in this class.
+
 class GameObject extends Group{
     //contains methods and fields that manage the
     // common aspects of all game objects .
@@ -111,6 +148,26 @@ class GameObject extends Group{
 
 
 }
+
+
+//Class Pond
+
+//This class represents a pond or lake in the Central Valley.
+// For this first version of the project,
+// we will abstract the pond as a simple blue circle placed at random such that it does not intersect any other ground based object.
+
+class Pond extends GameObject {
+
+    public Pond() {
+        Circle pondCircle = new Circle(50,LIGHTBLUE);
+        int pondRadius =50;
+        pondCircle.setRadius(pondRadius);// Todo Add it as childern to the root
+        this.getChildren().add(pondCircle);
+    }
+
+
+}
+
 
 //class Body extends GameObject{
 //    public Body(){
@@ -177,18 +234,6 @@ class Helipad extends GameObject {
     }
 
     class PondAndCloud {
-
-    }
-
-    class Pond extends GameObject {
-
-        public Pond() {
-            Circle pondCircle = new Circle(50,LIGHTBLUE);
-            int pondRadius =50;
-            pondCircle.setRadius(pondRadius);// Todo Add it as childern to the root
-            this.getChildren().add(pondCircle);
-        }
-
 
     }
 

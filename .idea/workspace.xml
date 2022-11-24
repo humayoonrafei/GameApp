@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb197409-8108-47c9-aad4-bf0f5e0ed5e6" name="Changes" comment="Added the Helipad , Cloud and Pond &#10;The helicopter commented">
+    <list default="true" id="bb197409-8108-47c9-aad4-bf0f5e0ed5e6" name="Changes" comment="Fixing the cloud">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screen Shot 2022-10-31 at 9.10.43 PM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668485633378</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Fixing the cloud">
+      <created>1668579200432</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1668579200432</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -189,6 +196,7 @@
     <MESSAGE value="Refactored the Helicopter class" />
     <MESSAGE value="almost working code" />
     <MESSAGE value="Added the Helipad , Cloud and Pond &#10;The helicopter commented" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the Helipad , Cloud and Pond &#10;The helicopter commented" />
+    <MESSAGE value="Fixing the cloud" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing the cloud" />
   </component>
 </project>
