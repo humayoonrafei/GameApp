@@ -2,6 +2,7 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -18,7 +19,10 @@ import java.awt.geom.Point2D;
 import java.util.Random;
 
 import static javafx.scene.paint.Color.*;
-
+/**** To do for next time (Reminder on what to work )
+ * 1 - working on helicopters
+ * 2- adding text percentage  inside the cloud and pond
+ */
 
 //Class names always start with an upper-case letter
 //Variable names always start with a lower-case letter
@@ -160,8 +164,8 @@ class GameObject extends Group{
 class Pond extends GameObject {
 
     public Pond() {
-        Circle pondCircle = new Circle(50,LIGHTBLUE);
-        int pondRadius =50;
+        Circle pondCircle = new Circle(10,LIGHTBLUE);
+        int pondRadius =10;
         pondCircle.setRadius(pondRadius);// Todo Add it as childern to the root
         this.getChildren().add(pondCircle);
     }
@@ -201,8 +205,8 @@ class Helipad extends GameObject {
     // Represents the starting and ending location
 
 
-    double Helipad_Height = 30;
-    double Helipad_Width = 40;
+    double Helipad_Height = 80;
+    double Helipad_Width = 80;
 
     public Helipad() {
 
@@ -230,6 +234,9 @@ class Helipad extends GameObject {
         // a yellow circle with a line to the direction of helicopter
         // display the current fuel
         // THe Helipad is below
+        void draw(GraphicsContext g){
+
+        }
 
 
     }
