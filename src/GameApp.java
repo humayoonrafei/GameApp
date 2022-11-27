@@ -14,8 +14,6 @@ import javafx.scene.paint.Color;
 import javafx.event.EventHandler;
 
 
-import java.awt.*;
-import java.awt.geom.Point2D;
 import java.util.Random;
 
 import static javafx.scene.paint.Color.*;
@@ -51,7 +49,7 @@ public class GameApp extends Application {
         //Pane root = new Pane();
         Ng = new Game();
         Scene root = new Scene(Ng, 400, 600);
-        //root.setFill(BLACK);
+        root.setFill(BLACK);
 
 
         // key Listeners
@@ -194,7 +192,7 @@ class Pond extends GameObject {
 class Cloud extends GameObject{
     // represents a cloud in the sky
     public Cloud() {
-        Circle cloudCircle = new Circle(50, DIMGRAY);
+        Circle cloudCircle = new Circle(50);
         int cloudRadius =50;
         cloudCircle.setRadius(cloudRadius);// Todo Add it as childern to the root
         this.getChildren().add(cloudCircle);
@@ -213,12 +211,12 @@ class Helipad extends GameObject {
         Rectangle Helipad = new Rectangle(Helipad_Width, Helipad_Height);
 //        Helipad.setX(((getAPP_WIDTH() / 2) - Helipad_Width));
 //        Helipad.setY(getAPP_HEIGHT() - Helipad_Height);
-        Helipad.setStroke(WHITE);
-        Helipad.setFill(ORANGE);
+        Helipad.setStroke(GRAY);
+
 
         Circle circle_Helipad = new Circle((Helipad_Width/2)-6);
         //circle_Helipad.setRadius();
-        circle_Helipad.setFill(DARKGRAY);
+        circle_Helipad.setStroke(GRAY);
 
         circle_Helipad.setTranslateX(Helipad_Width/2);
         circle_Helipad.setTranslateY(Helipad_Height/2);
