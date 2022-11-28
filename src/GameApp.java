@@ -5,10 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Ellipse;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
+import javafx.scene.shape.*;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.event.EventHandler;
@@ -107,8 +104,12 @@ class Game extends Pane {
         this.getChildren().add(pond);
 
 
+
         // Adding cloud to the childern
         this.getChildren().add(cloud);
+
+        Helicopter helicopter = new Helicopter();
+        this.getChildren().add(helicopter);
     }
 
 }
@@ -162,9 +163,10 @@ class GameObject extends Group{
 class Pond extends GameObject {
 
     public Pond() {
-        Circle pondCircle = new Circle(10,LIGHTBLUE);
+        Circle pondCircle = new Circle(10);
         int pondRadius =10;
         pondCircle.setRadius(pondRadius);// Todo Add it as childern to the root
+        pondCircle.setFill(BLUE);
         this.getChildren().add(pondCircle);
     }
 
@@ -213,7 +215,6 @@ class Helipad extends GameObject {
 //        Helipad.setY(getAPP_HEIGHT() - Helipad_Height);
         Helipad.setStroke(GRAY);
 
-
         Circle circle_Helipad = new Circle((Helipad_Width/2)-6);
         //circle_Helipad.setRadius();
         circle_Helipad.setStroke(GRAY);
@@ -227,12 +228,26 @@ class Helipad extends GameObject {
     }
 }
 
-    class Helicopter extends GameApp {
+    class Helicopter extends GameObject {
         // most complex game object
         // a yellow circle with a line to the direction of helicopter
         // display the current fuel
         // THe Helipad is below
-        void draw(GraphicsContext g){
+        double Helicopeter_Radius = 10;
+
+        public Helicopter(){
+            Circle Helicoptercircle = new Circle(Helicopeter_Radius);
+            Helicoptercircle.setFill(YELLOW);
+
+            Arc Helicopternose = new Arc(34,3,2,3,4,5);
+            Helicopternose.setFill(YELLOW);
+
+
+            this.getChildren().add(Helicopternose);
+            this.getChildren().add(Helicoptercircle);
+
+            Helicoptercircle.setTranslateX(getAPP_WIDTH()/2);
+            Helicoptercircle.setTranslateY(getAPP_HEIGHT()-Helicopeter_Radius);
 
         }
 
