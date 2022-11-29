@@ -90,8 +90,8 @@ class Game extends Pane {
         //-- Random Location for Cloud
 
         Random random = new Random();
-        int ranX = random.nextInt((cloud.getAPP_HEIGHT()-1)); // random value from 0 to width
-        int ranY = random.nextInt(cloud.getAPP_WIDTH()-1);
+        int ranX = ((cloud.getAPP_HEIGHT()-1)); // random value from 0 to width
+        int ranY = (cloud.getAPP_WIDTH()-1);
         cloud.setTranslateY(ranY);
         cloud.setTranslateX(ranX);
 
