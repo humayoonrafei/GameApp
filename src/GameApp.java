@@ -3,9 +3,14 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
+import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Scale;
+import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.event.EventHandler;
@@ -78,27 +83,31 @@ class Game extends Pane {
     //all game logic and object construction belong here
     // All of the Game rules are implemented in Game Class
     //state of the game and determines win/lose
+    final static double  APP_WIDTH = 400;
+
+    final static double   APP_HEIGHT = 600;
+
     public Game() {
+        setScaleY(-1);
         // setting Helipad on the screen
         Helipad helipad = new Helipad();
         //-- seting Cloud
         Cloud cloud = new Cloud();
         this.getChildren().add(helipad);
-        helipad.setTranslateY(helipad.getAPP_HEIGHT()- helipad.Helipad_Height);
-        helipad.setTranslateX(((helipad.getAPP_WIDTH()- helipad.Helipad_Width)/2));
+
 
         //-- Random Location for Cloud
 
         Random random = new Random();
-        int ranX = ((cloud.getAPP_HEIGHT()-1)); // random value from 0 to width
-        int ranY = (cloud.getAPP_WIDTH()-1);
-        cloud.setTranslateY(ranY);
-        cloud.setTranslateX(ranX);
-
-        // --setting Pond
-        Pond pond = new Pond() ;
-        pond.setTranslateX(ranX+4);
-        pond.setTranslateX(ranY+2);
+//        /int ranX = (GameObject.APP_HEIGHT-1); // random value from 0 to width
+//        int ranY = (cloud.getAPP_WIDTH()-1);
+//        cloud.setTranslateY(ranY);
+//        cloud.setTranslateX(ranX);
+//
+//        // --setting Pond
+          Pond pond = new Pond() ;
+//        pond.setTranslateX(ranX+4);
+//        pond.setTranslateX(ranY+2);
 
 
         this.getChildren().add(pond);
@@ -108,10 +117,14 @@ class Game extends Pane {
         // Adding cloud to the childern
         this.getChildren().add(cloud);
 
-        Helicopter helicopter = new Helicopter();
+        Helicopter helicopter = new Helicopter(0,0); // translation from Helipad by doing helipd.mytranslation.getX() and also gety()
         this.getChildren().add(helicopter);
+
     }
 
+}
+interface Updatable{
+    void update();
 }
 
 
@@ -131,27 +144,62 @@ class Game extends Pane {
 // Any state or behavior in this class should apply to all game object this. For example, the helicopter can move, while a pond cannot.
 // Consequently, you would not include anything regarding movement in this class.
 
-class GameObject extends Group{
+class GameObject extends Group implements Updatable{
     //contains methods and fields that manage the
     // common aspects of all game objects .
 
 
     // The GameApp class sets up all keyboard event handlers
     // to invoke public methods in Game.
-    private  int APP_WIDTH = 400;
-    public int getAPP_WIDTH() {
-        return APP_WIDTH;
+
+
+
+
+        protected Translate myTranslation;
+        protected Rotate myRotation;
+        protected Scale myScale;
+
+        public GameObject(){
+            myTranslation = new Translate();
+            myRotation = new Rotate();
+            myScale = new Scale();
+            this.getTransforms().addAll(myTranslation,myRotation,myScale);
+        }
+
+        public void rotate(double degrees) {
+            myRotation.setAngle(degrees);
+            myRotation.setPivotX(0);
+            myRotation.setPivotY(0);
+        }
+
+        public void scale(double sx, double sy) {
+            myScale.setX(sx);
+            myScale.setY(sy);
+        }
+
+        public void translate(double tx, double ty) {
+            myTranslation.setX(tx);
+            myTranslation.setY(ty);
+        }
+
+        public double getMyRotation(){
+            return myRotation.getAngle();
+        }
+
+        public void update(){
+            for(Node n : getChildren()){
+                if(n instanceof Updatable)
+                    ((Updatable)n).update();
+            }
+        }
+
+        void add(Node node) {
+            this.getChildren().add(node);
+        }
     }
 
 
-    private   int APP_HEIGHT = 600;
-    public int getAPP_HEIGHT() {
-        return APP_HEIGHT;
-    }
 
-
-
-}
 
 
 //Class Pond
@@ -208,19 +256,30 @@ class Helipad extends GameObject {
     double Helipad_Height = 80;
     double Helipad_Width = 80;
 
+    double Helipad_Position= 100;
     public Helipad() {
 
+
         Rectangle Helipad = new Rectangle(Helipad_Width, Helipad_Height);
-//        Helipad.setX(((getAPP_WIDTH() / 2) - Helipad_Width));
-//        Helipad.setY(getAPP_HEIGHT() - Helipad_Height);
+
         Helipad.setStroke(GRAY);
 
-        Circle circle_Helipad = new Circle((Helipad_Width/2)-6);
+
+
+        double Circle_Radius = 30;
+        Circle circle_Helipad = new Circle((Circle_Radius));
+        circle_Helipad.setTranslateY(Helipad_Position);
+        circle_Helipad.setTranslateX((Game.APP_WIDTH-Circle_Radius)/2);
         //circle_Helipad.setRadius();
         circle_Helipad.setStroke(GRAY);
 
-        circle_Helipad.setTranslateX(Helipad_Width/2);
-        circle_Helipad.setTranslateY(Helipad_Height/2);
+
+        Helipad.setY(circle_Helipad.getTranslateY()-(circle_Helipad.getRadius()/2));
+       Helipad.setX(circle_Helipad.getTranslateX()-(circle_Helipad.getRadius()/2));//-(circle_Helipad.getRadius()+4));
+
+
+        //circle_Helipad.setTranslateX(Helipad.getTranslateX()+circle_Helipad.getRadius()+2);
+       //circle_Helipad.setTranslateY(Helipad.getTranslateY()+circle_Helipad.getRadius());
 
         this.getChildren().add(Helipad);
         this.getChildren().add(circle_Helipad);
@@ -229,207 +288,54 @@ class Helipad extends GameObject {
 }
 
     class Helicopter extends GameObject {
+
         // most complex game object
         // a yellow circle with a line to the direction of helicopter
         // display the current fuel
-        // THe Helipad is below
         double Helicopeter_Radius = 10;
 
-        public Helicopter(){
+        public Helicopter(double x,double y){
+
+
             Circle Helicoptercircle = new Circle(Helicopeter_Radius);
             Helicoptercircle.setFill(YELLOW);
+            //Image helicopterImage = new Image("/Users/hqrafei/Documents/projects/GameApp/Pictures/Helicopter.png");
 
-            Arc Helicopternose = new Arc(34,3,2,3,4,5);
-            Helicopternose.setFill(YELLOW);
+            //ImageView iv1 = new ImageView();
+            //iv1.setImage(helicopterImage);
 
 
-            this.getChildren().add(Helicopternose);
+            Line line = new Line();
+            line.setStartX(Helicoptercircle.getCenterX());
+            line.setStartY(Helicoptercircle.getCenterY());
+            line.setEndX(Helicoptercircle.getCenterX()+5);
+            line.setEndY((Helicoptercircle.getCenterY()+8));
+
+
+
+            line.setTranslateY(50);
+            translate(x,y); // moves Helicopter object by x and y
+
+
+
+            line.setStroke(RED);
+            this.getChildren().add(line);
+
+
             this.getChildren().add(Helicoptercircle);
 
-            Helicoptercircle.setTranslateX(getAPP_WIDTH()/2);
-            Helicoptercircle.setTranslateY(getAPP_HEIGHT()-Helicopeter_Radius);
+            Helicoptercircle.setTranslateX(Game.APP_WIDTH/2);
+            Helicoptercircle.setTranslateY(Game.APP_HEIGHT-Helicopeter_Radius);
+
+
 
         }
 
 
     }
-
     class PondAndCloud {
 
     }
 
-//class Helicopter {
-//    private Point Location;
-//    private int size ;
-//    private int speed = 0;
-//    private int heading = 0 ;
-//    private final int MAX_SPEED = 10;
-//    private final int MIN_SPEED = 0;
-//    private int water =0;
-//    private int fuelConsummationRate ; // equal it to the fuel;
-//    private int newX;
-//    private int newY;
-//    private int eX;
-//    private int eY;
-//    private double angle;
-//    private Point2D location;
-//
-//    public Helicopter(Helipad helipad) {
-//
-//        size = 50;
-//        location = new Point(helipad.getArcLocation().getX() +
-//                helipad.getArcSize() / 2 - size / 2 ,
-//                helipad.getArcLocation().getY() +
-//                        helipad.getArcSize() / 2 - size / 2 );
-//
-//    }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//}
 
-//    /
-//
-    // River Class
-//
-
-
-    // Fire class
-//
-
-
-    //Helicopter Class
-//
-//    class Helicopter {
-//        private Point2D location;
-//        private int size;
-//        private int speed = 0;
-//        private int heading = 0;
-//        private final int MAX_SPEED = 10;
-//        private final int MIN_SPEED = 0;
-//        private int water = 0;
-//        private int fuelConsummationRate;   // //equal to fuel
-//        private int newX;
-//        private int newY;
-//        private int eX;
-//        private int eY;
-//        private double angle;
-//
-//        //initialize the helicopter according to helipad location
-//        public Helicopter(Helipad helipad) {
-//
-//            size = 50;
-//            location = new Point((int) (helipad.getArcLocation().getX() +
-//                    helipad.getArcSize() / 2 - size / 2), (int) (helipad.getArcLocation().getY() +
-//                    helipad.getArcSize() / 2 - size / 2));
-//
-//        }
-//
-//
-//        //This method checks if the helicopter is on the helipad and
-//        // returns a boolean.
-//        //
-//        boolean helicopterIsOnHelipad(Helipad helipad) {
-//
-//            boolean helicopterOnHelipad = false;
-//
-//            if (location.getX() > helipad.getArcLocation().getX() &&
-//                    location.getX() < helipad.getArcLocation().getX() +
-//                            helipad.getArcSize() && location.getY() >
-//                    helipad.getArcLocation().getY() && location.getY() <
-//                    helipad.getArcLocation().getY() + helipad.getArcSize()) {
-//
-//                helicopterOnHelipad = true;
-//            }
-//            return helicopterOnHelipad;
-//        }
-//
-//        int getSpeed() {
-//            return speed;
-//        }
-//
-//        int getFuelConsummationRate() {
-//            return fuelConsummationRate;
-//        }
-//
-//        //change the helicopter speed, the MAX SPEED is 10 and MIN SPEED is 0.
-//        //
-//        void speedUp() {
-//            if (speed < MAX_SPEED)
-//                speed++;
-//        }
-//
-//        void speedDown() {
-//            if (speed > MIN_SPEED)
-//                speed--;
-//        }
-//
-//        //move the helicopter object and calculate the fuel consumption
-//        //
-//        void move() {
-//            double deltaX = Math.cos(
-//                    Math.toRadians(heading - 90)) * speed * 3;
-//
-//            double deltaY = Math.sin(
-//                    Math.toRadians(heading - 90)) * speed * 3;
-//
-//            newX = (int) (location.getX() + deltaX);
-//            newY = (int) (location.getY() + deltaY);
-//            location.setX(newX);
-//            location.setY(newY);
-//            fuelConsummationRate -= (speed * speed + 5);
-//
-//            //THis is the code to for the Helicopter line after
-//            // hours of debugging at last it's complete.
-//            //
-//            angle = Math.toRadians(heading - 90);
-//            eX = (int) ((100) * Math.cos(angle));
-//            eY = (int) ((100) * Math.sin(angle));
-//
-//        }
-//
-//        //change the heading 15 degree to the Right
-//        //
-//        void turnRight() {
-//
-//            if (heading < 345)
-//                heading += 15;
-//
-//            else if (heading == 345)
-//                heading = 0;
-//
-//            else {
-//
-//                heading = heading - 360;
-//                heading = heading + 15;
-//            }
-//        }
-//
-//        //change the heading 15 degree to the left
-//        //
-//        void turnLeft() {
-//            if (heading >= 15)
-//                heading -= 15;
-//
-//            else {
-//                heading = heading - 15;
-//                heading = heading + 360;
-//            }
-//
-//
-//
-//
-//
-//        }
-//    }
-
-//
-
-        //
 
