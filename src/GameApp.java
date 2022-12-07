@@ -90,7 +90,12 @@ class Game extends Pane {
     public Game() {
         setScaleY(-1);
         // setting Helipad on the screen
+
         Helipad helipad = new Helipad();
+        helipad.setTranslateX((APP_WIDTH-helipad.Helipad_Width)/2);
+        helipad.setTranslateY((APP_HEIGHT-helipad.Helipad_Height)/6);
+
+
         //-- seting Cloud
         Cloud cloud = new Cloud();
         this.getChildren().add(helipad);
@@ -117,7 +122,7 @@ class Game extends Pane {
         // Adding cloud to the childern
         this.getChildren().add(cloud);
 
-        Helicopter helicopter = new Helicopter(0,0); // translation from Helipad by doing helipd.mytranslation.getX() and also gety()
+        Helicopter helicopter = new Helicopter(helipad.myTranslation.getX(),helipad.myTranslation.getY()); // translation from Helipad by doing helipd.mytranslation.getX() and also gety()
         this.getChildren().add(helicopter);
 
     }
@@ -268,14 +273,15 @@ class Helipad extends GameObject {
 
         double Circle_Radius = 30;
         Circle circle_Helipad = new Circle((Circle_Radius));
-        circle_Helipad.setTranslateY(Helipad_Position);
-        circle_Helipad.setTranslateX((Game.APP_WIDTH-Circle_Radius)/2);
+
+        circle_Helipad.setTranslateY(Helipad_Height/2);
+
+        circle_Helipad.setTranslateX((Helipad_Width)/2);
         //circle_Helipad.setRadius();
         circle_Helipad.setStroke(GRAY);
 
 
-        Helipad.setY(circle_Helipad.getTranslateY()-(circle_Helipad.getRadius()/2));
-       Helipad.setX(circle_Helipad.getTranslateX()-(circle_Helipad.getRadius()/2));//-(circle_Helipad.getRadius()+4));
+
 
 
         //circle_Helipad.setTranslateX(Helipad.getTranslateX()+circle_Helipad.getRadius()+2);
@@ -305,27 +311,32 @@ class Helipad extends GameObject {
             //iv1.setImage(helicopterImage);
 
 
-            Line line = new Line();
-            line.setStartX(Helicoptercircle.getCenterX());
-            line.setStartY(Helicoptercircle.getCenterY());
-            line.setEndX(Helicoptercircle.getCenterX()+5);
-            line.setEndY((Helicoptercircle.getCenterY()+8));
 
 
 
-            line.setTranslateY(50);
-            translate(x,y); // moves Helicopter object by x and y
 
 
 
-            line.setStroke(RED);
-            this.getChildren().add(line);
+
 
 
             this.getChildren().add(Helicoptercircle);
 
             Helicoptercircle.setTranslateX(Game.APP_WIDTH/2);
-            Helicoptercircle.setTranslateY(Game.APP_HEIGHT-Helicopeter_Radius);
+            Helicoptercircle.setTranslateY((Game.APP_HEIGHT-Helicopeter_Radius)/4.59);
+
+            Line line = new Line();
+            line.setStartX(Helicoptercircle.getTranslateX());
+            line.setStartY(Helicoptercircle.getTranslateY());
+            line.setEndX(Helicoptercircle.getTranslateX());
+            line.setEndY((Helicoptercircle.getTranslateY()+16));
+            line.setStroke(YELLOW);
+            line.setStrokeWidth(3);
+
+            this.getChildren().add(line);
+
+
+            translate(x,y); // moves Helicopter object by x and y
 
 
 
