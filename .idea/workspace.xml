@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb197409-8108-47c9-aad4-bf0f5e0ed5e6" name="Changes" comment="Building the airplance to move left not finished">
+    <list default="true" id="bb197409-8108-47c9-aad4-bf0f5e0ed5e6" name="Changes" comment="The Helicopter turns Right and Turns Left only">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameApp.java" afterDir="false" />
     </list>
@@ -249,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670467765922</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="The Helicopter turns Right and Turns Left only">
+      <created>1670481002341</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1670481002341</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -288,7 +295,8 @@
     <MESSAGE value="figured out the Helicopter and also to place it on Helipad" />
     <MESSAGE value="Refactored the helipad class and centered the helicopter on it with hamsinfi" />
     <MESSAGE value="Building the airplance to move left not finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="Building the airplance to move left not finished" />
+    <MESSAGE value="The Helicopter turns Right and Turns Left only" />
+    <option name="LAST_COMMIT_MESSAGE" value="The Helicopter turns Right and Turns Left only" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/GameApp$GameApp.ic" NAME="GameApp Coverage Results" MODIFIED="1669839401737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

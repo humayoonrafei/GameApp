@@ -75,6 +75,7 @@ public class GameApp extends Application {
                         Ng.HelicopterLeftTurn();
                         break;
                     case DOWN:
+                        Ng.HelicopterMoveDown();
                         break;
                     case UP:
                         Ng.HelicopterMoveUp();
@@ -106,11 +107,11 @@ class Game extends Pane {
     //all game logic and object construction belong here
     // All of the Game rules are implemented in Game Class
     //state of the game and determines win/lose
-    final static double  APP_WIDTH = 400;
+    final static double APP_WIDTH = 400;
 
-    final static double   APP_HEIGHT = 600;
+    final static double APP_HEIGHT = 600;
 
-    static int  HELICOPTER_FUEL = 25000;
+    static int HELICOPTER_FUEL = 25000;
     Helicopter helicopter;
 
     public Game() {
@@ -129,42 +130,42 @@ class Game extends Pane {
 //        cloud.setTranslateX(ranX);
 //
 //        // --setting Pond
-        Pond pond = new Pond() ;
+        Pond pond = new Pond();
 //        pond.setTranslateX(ranX+4);
 //        pond.setTranslateX(ranY+2);
         this.getChildren().add(pond);
         this.getChildren().add(cloud);
 
-        helicopter = new Helicopter(helipad.myTranslation.getX(),helipad.myTranslation.getY());
+        helicopter = new Helicopter(helipad.myTranslation.getX(), helipad.myTranslation.getY());
         this.getChildren().add(helicopter);
 
         // Function for turning the Helicopter to the left
 
 
-
-
-
     }
-        public void HelicopterLeftTurn() {
-            helicopter.rotate(15);
-        }
-        public void HelicopterRightTurn(){
-            helicopter.rotate(-15);
-        }
 
-        public void HelicopterMoveUp(){
-            int ofset= 4;
-            helicopter.translate(getTranslateX()+ofset,getTranslateY()+ofset);
+    public void HelicopterLeftTurn() {
+        helicopter.rotate(15);
+    }
 
-        }
+    public void HelicopterRightTurn() {
+        helicopter.rotate(-15);
+    }
+    int offset = 4;
+    public void HelicopterMoveUp() {
+
+        helicopter.translate(helicopter.myTranslation.getX(), helicopter.myTranslation.getY() + offset);
+    }
+    public void HelicopterMoveDown(){
+        helicopter.translate(helicopter.myTranslation.getX(),helicopter.myTranslation.getY()-offset);
+    }
 
 ///
-}
 
-interface Updatable{
-    void update();
-}
 
+    interface Updatable {
+        void update();
+    }
 
 
 //Game Object Classes
@@ -182,26 +183,24 @@ interface Updatable{
 // Any state or behavior in this class should apply to all game object this. For example, the helicopter can move, while a pond cannot.
 // Consequently, you would not include anything regarding movement in this class.
 
-class GameObject extends Group implements Updatable{
-    //contains methods and fields that manage the
-    // common aspects of all game objects .
+    class GameObject extends Group implements Updatable {
+        //contains methods and fields that manage the
+        // common aspects of all game objects .
 
 
-    // The GameApp class sets up all keyboard event handlers
-    // to invoke public methods in Game.
-
-
+        // The GameApp class sets up all keyboard event handlers
+        // to invoke public methods in Game.
 
 
         protected Translate myTranslation;
         protected Rotate myRotation;
         protected Scale myScale;
 
-        public GameObject(){
+        public GameObject() {
             myTranslation = new Translate();
             myRotation = new Rotate();
             myScale = new Scale();
-            this.getTransforms().addAll(myTranslation,myRotation,myScale);
+            this.getTransforms().addAll(myTranslation, myRotation, myScale);
         }
 
         public void rotate(double degrees) {
@@ -220,14 +219,14 @@ class GameObject extends Group implements Updatable{
             myTranslation.setY(ty);
         }
 
-        public double getMyRotation(){
+        public double getMyRotation() {
             return myRotation.getAngle();
         }
 
-        public void update(){
-            for(Node n : getChildren()){
-                if(n instanceof Updatable)
-                    ((Updatable)n).update();
+        public void update() {
+            for (Node n : getChildren()) {
+                if (n instanceof Updatable)
+                    ((Updatable) n).update();
             }
         }
 
@@ -237,30 +236,27 @@ class GameObject extends Group implements Updatable{
     }
 
 
-
-
-
 //Class Pond
 
 //This class represents a pond or lake in the Central Valley.
 // For this first version of the project,
 // we will abstract the pond as a simple blue circle placed at random such that it does not intersect any other ground based object.
 
-class Pond extends GameObject {
+    class Pond extends GameObject {
 
-    public Pond() {
-        Circle pondCircle = new Circle(10);
-        int pondRadius =10;
-        pondCircle.setRadius(pondRadius);// Todo Add it as childern to the root
-        pondCircle.setFill(BLUE);
-        this.getChildren().add(pondCircle);
+        public Pond() {
+            Circle pondCircle = new Circle(10);
+            int pondRadius = 10;
+            pondCircle.setRadius(pondRadius);// Todo Add it as childern to the root
+            pondCircle.setFill(BLUE);
+            this.getChildren().add(pondCircle);
+        }
+
+
     }
 
 
-}
-
-
-//class Body extends GameObject{
+    //class Body extends GameObject{
 //    public Body(){
 //        super();
 //        Ellipse body = new Ellipse();
@@ -277,56 +273,53 @@ class Pond extends GameObject {
 //        add(m)
 //    }
 //}
-class Cloud extends GameObject{
-    // represents a cloud in the sky
-    public Cloud() {
-        Circle cloudCircle = new Circle(50);
-        int cloudRadius =50;
-        cloudCircle.setRadius(cloudRadius);// Todo Add it as childern to the root
-        this.getChildren().add(cloudCircle);
+    class Cloud extends GameObject {
+        // represents a cloud in the sky
+        public Cloud() {
+            Circle cloudCircle = new Circle(50);
+            int cloudRadius = 50;
+            cloudCircle.setRadius(cloudRadius);// Todo Add it as childern to the root
+            this.getChildren().add(cloudCircle);
+        }
     }
-}
 
-class Helipad extends GameObject {
-    // Represents the starting and ending location
-
-
-    double Helipad_Height = 80;
-    double Helipad_Width = 80;
-
-    double Helipad_Position= 100;
-    public Helipad() {
+    class Helipad extends GameObject {
+        // Represents the starting and ending location
 
 
-        Rectangle Helipad = new Rectangle(Helipad_Width, Helipad_Height);
+        double Helipad_Height = 80;
+        double Helipad_Width = 80;
 
-        Helipad.setStroke(GRAY);
+        double Helipad_Position = 100;
 
-
-
-        double Circle_Radius = 30;
-        Circle circle_Helipad = new Circle((Circle_Radius));
-
-        //circle_Helipad.setTranslateY(Helipad_Height/2);
-        Helipad.setX((circle_Helipad.getCenterX() - Helipad.getWidth())/2);
-        Helipad.setY((circle_Helipad.getCenterY() - Helipad.getHeight())/2);
-        //circle_Helipad.setTranslateX((Helipad_Width)/2);
-        //circle_Helipad.setRadius();
-        circle_Helipad.setStroke(GRAY);
-        translate(Game.APP_WIDTH/2, Helipad_Height);
+        public Helipad() {
 
 
+            Rectangle Helipad = new Rectangle(Helipad_Width, Helipad_Height);
+
+            Helipad.setStroke(GRAY);
 
 
+            double Circle_Radius = 30;
+            Circle circle_Helipad = new Circle((Circle_Radius));
 
-        //circle_Helipad.setTranslateX(Helipad.getTranslateX()+circle_Helipad.getRadius()+2);
-       //circle_Helipad.setTranslateY(Helipad.getTranslateY()+circle_Helipad.getRadius());
+            //circle_Helipad.setTranslateY(Helipad_Height/2);
+            Helipad.setX((circle_Helipad.getCenterX() - Helipad.getWidth()) / 2);
+            Helipad.setY((circle_Helipad.getCenterY() - Helipad.getHeight()) / 2);
+            //circle_Helipad.setTranslateX((Helipad_Width)/2);
+            //circle_Helipad.setRadius();
+            circle_Helipad.setStroke(GRAY);
+            translate(Game.APP_WIDTH / 2, Helipad_Height);
 
-        this.getChildren().add(Helipad);
-        this.getChildren().add(circle_Helipad);
 
+            //circle_Helipad.setTranslateX(Helipad.getTranslateX()+circle_Helipad.getRadius()+2);
+            //circle_Helipad.setTranslateY(Helipad.getTranslateY()+circle_Helipad.getRadius());
+
+            this.getChildren().add(Helipad);
+            this.getChildren().add(circle_Helipad);
+
+        }
     }
-}
 
     class Helicopter extends GameObject {
 
@@ -339,7 +332,7 @@ class Helipad extends GameObject {
 
         double Helicopeter_Radius = 10;
 
-        public Helicopter(double x,double y){
+        public Helicopter(double x, double y) {
 
 
             Circle Helicoptercircle = new Circle(Helicopeter_Radius);
@@ -352,35 +345,35 @@ class Helipad extends GameObject {
 
             this.getChildren().add(Helicoptercircle);
 
-           // Helicoptercircle.setTranslateX(Game.APP_WIDTH/2);
+            // Helicoptercircle.setTranslateX(Game.APP_WIDTH/2);
             //Helicoptercircle.setTranslateY((Game.APP_HEIGHT-Helicopeter_Radius)/4.59);
 
             Line line = new Line();
             line.setStartX(Helicoptercircle.getTranslateX());
             line.setStartY(Helicoptercircle.getTranslateY());
             line.setEndX(Helicoptercircle.getTranslateX());
-            line.setEndY((Helicoptercircle.getTranslateY()+16));
+            line.setEndY((Helicoptercircle.getTranslateY() + 16));
             line.setStroke(YELLOW);
             line.setStrokeWidth(3);
 
             this.getChildren().add(line);
 
 
-            translate(x,y); // moves Helicopter object by x and y
-            System.out.println(x+" "+y);
+            translate(x, y); // moves Helicopter object by x and y
+            System.out.println(x + " " + y);
 
 
+        }
 
-
-            }
-        public  void rotateLeft() {
+        public void rotateLeft() {
             rotate(15);
         }
 
     }
+
     class PondAndCloud {
 
     }
-
+}
 
 
