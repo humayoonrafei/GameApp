@@ -158,7 +158,7 @@ class Game extends Pane {
         helicopter.rotate(15);
     }
 
-
+///
 }
 
 interface Updatable{
