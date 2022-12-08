@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
@@ -54,6 +55,8 @@ public class GameApp extends Application {
         root.setFill(BLACK);
 
 
+
+
         // key Listeners
         //Game class methods get called on key press for instance left arrow key calls Ng.heliMoveLeft()
 
@@ -64,6 +67,22 @@ public class GameApp extends Application {
         primaryStage.setTitle("GameAPP");
         primaryStage.show();
 
+      /*  root.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch(event.getCode()){
+                    case LEFT:
+                        break;
+                    case DOWN:
+                        break;
+                    case UP:
+                        break;
+                    case RIGHT:
+                        break;
+                }
+            }
+        });
+*/
     }
 }
 //Class Game
@@ -129,12 +148,19 @@ class Game extends Pane {
 
         this.getChildren().add(helicopter);
 
+        // Function for turning the Helicopter to the left
+
 
     }
+    Helicopter helicopter = new Helicopter(0,0);
+    public void moveHeliLeft()
+    {
+        helicopter.rotate(15);
+    }
+
 
 }
-//public void moveHeliLeft()
-//{ helicopter.moveLeft() }
+
 interface Updatable{
     void update();
 }
@@ -166,7 +192,7 @@ class GameObject extends Group implements Updatable{
 
 
 
-        
+
         protected Translate myTranslation;
         protected Rotate myRotation;
         protected Scale myScale;
@@ -282,8 +308,8 @@ class Helipad extends GameObject {
         Circle circle_Helipad = new Circle((Circle_Radius));
 
         //circle_Helipad.setTranslateY(Helipad_Height/2);
-        Helipad.setX(circle_Helipad.getCenterX() - Helipad.getWidth()/2);
-        Helipad.setY(circle_Helipad.getCenterY() - Helipad.getHeight()/2);
+        Helipad.setX((circle_Helipad.getCenterX() - Helipad.getWidth())/2);
+        Helipad.setY((circle_Helipad.getCenterY() - Helipad.getHeight())/2);
         //circle_Helipad.setTranslateX((Helipad_Width)/2);
         //circle_Helipad.setRadius();
         circle_Helipad.setStroke(GRAY);
@@ -309,6 +335,8 @@ class Helipad extends GameObject {
         // display the current fuel
         // public void rotateLeft() is when you do LEFT Arrow key
         //{ rotate(-15); }
+
+
         double Helicopeter_Radius = 10;
 
         public Helicopter(double x,double y){
@@ -342,6 +370,10 @@ class Helipad extends GameObject {
             System.out.println(x+" "+y);
 
 
+
+            }
+        public void rotateLeft() {
+            rotate(15);
         }
 
 
