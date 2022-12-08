@@ -67,22 +67,25 @@ public class GameApp extends Application {
         primaryStage.setTitle("GameAPP");
         primaryStage.show();
 
-      /*  root.setOnKeyPressed(new EventHandler<KeyEvent>() {
+       root.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 switch(event.getCode()){
                     case LEFT:
+                        Ng.HelicopterLeftTurn();
                         break;
                     case DOWN:
                         break;
                     case UP:
+                        Ng.HelicopterMoveUp();
                         break;
                     case RIGHT:
+                        Ng.HelicopterRightTurn();
                         break;
                 }
             }
         });
-*/
+
     }
 }
 //Class Game
@@ -108,23 +111,17 @@ class Game extends Pane {
     final static double   APP_HEIGHT = 600;
 
     static int  HELICOPTER_FUEL = 25000;
+    Helicopter helicopter;
 
     public Game() {
         setScaleY(-1);
         // setting Helipad on the screen
-
         Helipad helipad = new Helipad();
-       // helipad.setTranslateX((APP_WIDTH-helipad.Helipad_Width)/2);
-        //helipad.setTranslateY((APP_HEIGHT-helipad.Helipad_Height)/6);
-
 
         //-- seting Cloud
         Cloud cloud = new Cloud();
         this.getChildren().add(helipad);
-
-
         //-- Random Location for Cloud
-
         Random random = new Random();
 //        /int ranX = (GameObject.APP_HEIGHT-1); // random value from 0 to width
 //        int ranY = (cloud.getAPP_WIDTH()-1);
@@ -132,31 +129,34 @@ class Game extends Pane {
 //        cloud.setTranslateX(ranX);
 //
 //        // --setting Pond
-          Pond pond = new Pond() ;
+        Pond pond = new Pond() ;
 //        pond.setTranslateX(ranX+4);
 //        pond.setTranslateX(ranY+2);
-
-
         this.getChildren().add(pond);
-
-
-
-        // Adding cloud to the childern
         this.getChildren().add(cloud);
 
-        Helicopter helicopter = new Helicopter(helipad.myTranslation.getX(),helipad.myTranslation.getY()); // translation from Helipad by doing helipd.mytranslation.getX() and also gety()
-
+        helicopter = new Helicopter(helipad.myTranslation.getX(),helipad.myTranslation.getY());
         this.getChildren().add(helicopter);
 
         // Function for turning the Helicopter to the left
 
 
+
+
+
     }
-    Helicopter helicopter = new Helicopter(0,0);
-    public void moveHeliLeft()
-    {
-        helicopter.rotate(15);
-    }
+        public void HelicopterLeftTurn() {
+            helicopter.rotate(15);
+        }
+        public void HelicopterRightTurn(){
+            helicopter.rotate(-15);
+        }
+
+        public void HelicopterMoveUp(){
+            int ofset= 4;
+            helicopter.translate(getTranslateX()+ofset,getTranslateY()+ofset);
+
+        }
 
 ///
 }
@@ -371,11 +371,11 @@ class Helipad extends GameObject {
 
 
 
+
             }
-        public void rotateLeft() {
+        public  void rotateLeft() {
             rotate(15);
         }
-
 
     }
     class PondAndCloud {
