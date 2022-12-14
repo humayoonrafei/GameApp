@@ -143,21 +143,44 @@ class Game extends Pane {
 
 
     }
-
+    int speed = 4;
+    int degreeLeft= 45;
     public void HelicopterLeftTurn() {
-        helicopter.rotate(15);
-    }
 
+        double dy = speed*Math.sin(Math.toRadians(degreeLeft));
+        double dx = speed*Math.cos(Math.toRadians(degreeLeft));
+        helicopter.rotate(degreeLeft);
+        helicopter.setTranslateX(helicopter.getTranslateX()-dx);
+        helicopter.setTranslateY(helicopter.getTranslateY()+dy);
+
+
+     // helicopter.translate(helicopter.myTranslation.getX()-offset, helicopter.myTranslation.getY() );
+   //     helicopter.translate(Math.cos(Math.toRadians(helicopter.myTranslation.getX())), Math.cos(Math.toRadians(helicopter.myTranslation.getY())) );
+     //   ++degreeLeft;
+    }
+    int degrees = -15;
     public void HelicopterRightTurn() {
-        helicopter.rotate(-15);
-    }
-    int offset = 4;
-    public void HelicopterMoveUp() {
 
-        helicopter.translate(helicopter.myTranslation.getX(), helicopter.myTranslation.getY() + offset);
+        double dy = speed*Math.sin(Math.toRadians(degrees));
+        double dx = speed*Math.cos(Math.toRadians(degrees));
+        helicopter.rotate(degrees);
+        helicopter.setTranslateX(helicopter.getTranslateX()+dx);
+        helicopter.setTranslateY(helicopter.getTranslateY()-dy);
+
+//        --degrees;
+//        helicopter.rotate(degrees);
+//        helicopter.translate(helicopter.myTranslation.getX()+speed, helicopter.myTranslation.getY());
+//        System.out.println("degrees "+degrees);
+//        --degrees;
+//        System.out.println("degrees"+degrees);
+    }
+
+
+    public void HelicopterMoveUp() {
+        helicopter.translate(helicopter.myTranslation.getX(), helicopter.myTranslation.getY() + speed);
     }
     public void HelicopterMoveDown(){
-        helicopter.translate(helicopter.myTranslation.getX(),helicopter.myTranslation.getY()-offset);
+        helicopter.translate(helicopter.myTranslation.getX(),helicopter.myTranslation.getY()-speed);
     }
 
 ///
