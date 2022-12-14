@@ -152,7 +152,7 @@ class Game extends Pane {
 
         double dy = speed*Math.sin(Math.toRadians(degreeLeft));
         double dx = speed*Math.cos(Math.toRadians(degreeLeft));
-        helicopter.rotate(degreeLeft);
+        helicopter.rotate(helicopter.getMyRotation()+degreeLeft);
         helicopter.setTranslateX(helicopter.getTranslateX()-dx);
         helicopter.setTranslateY(helicopter.getTranslateY()+dy);
 
@@ -166,7 +166,7 @@ class Game extends Pane {
 
         double dy = speed*Math.sin(Math.toRadians(degrees));
         double dx = speed*Math.cos(Math.toRadians(degrees));
-        helicopter.rotate(degrees);
+        helicopter.rotate(helicopter.getMyRotation()+degrees);
         helicopter.setTranslateX(helicopter.getTranslateX()+dx);
         helicopter.setTranslateY(helicopter.getTranslateY()-dy);
 
@@ -391,9 +391,8 @@ class Game extends Pane {
 
             Text text = new Text(" ABC DE ");
             text.setStroke(YELLOW);
-          //  text.setTranslateX(Helicoptercircle.getTranslateY()-40);
-            text.setRotate(-90);
-            text.setRotate(180);
+          //
+
             this.getChildren().add(text);
 
 
