@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb197409-8108-47c9-aad4-bf0f5e0ed5e6" name="Changes" comment="Helicopter moving as a vector to the left and right .">
+    <list default="true" id="bb197409-8108-47c9-aad4-bf0f5e0ed5e6" name="Changes" comment="Added the rotation again to the Helicopter &#10;--- next -- &#10;Moving to where the helicopter header is facing to">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameApp.java" afterDir="false" />
     </list>
@@ -277,7 +277,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670986768687</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Added the rotation of the to round &#10;--- next -- &#10;Moving to where the helicopter header is facing to">
+      <created>1670992177886</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1670992177886</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Added the rotation again to the Helicopter &#10;--- next -- &#10;Moving to where the helicopter header is facing to">
+      <created>1670992221476</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1670992221476</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -292,8 +306,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="THe classes are created" />
-    <MESSAGE value="Helipad created and located at the bottom centered in the miidle" />
     <MESSAGE value="Creating classes and analyzing each class watching the video on udemy for classes" />
     <MESSAGE value="updating classes" />
     <MESSAGE value="trying setters and getters" />
@@ -317,7 +329,9 @@
     <MESSAGE value="The Helicopter turns Right and Turns Left only" />
     <MESSAGE value="The Helicopter goes Up and down too but the header just turns left and right" />
     <MESSAGE value="Helicopter moving as a vector to the left and right ." />
-    <option name="LAST_COMMIT_MESSAGE" value="Helicopter moving as a vector to the left and right ." />
+    <MESSAGE value="Added the rotation of the to round &#10;--- next -- &#10;Moving to where the helicopter header is facing to" />
+    <MESSAGE value="Added the rotation again to the Helicopter &#10;--- next -- &#10;Moving to where the helicopter header is facing to" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the rotation again to the Helicopter &#10;--- next -- &#10;Moving to where the helicopter header is facing to" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/GameApp$GameApp.ic" NAME="GameApp Coverage Results" MODIFIED="1669839401737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

@@ -147,28 +147,28 @@ class Game extends Pane {
 
     }
     int speed = 4;
-    int degreeLeft= 45;
+    int degreeLeft= 15;
     public void HelicopterLeftTurn() {
 
-        double dy = speed*Math.sin(Math.toRadians(degreeLeft));
-        double dx = speed*Math.cos(Math.toRadians(degreeLeft));
+    //    double dy = speed*Math.sin(Math.toRadians(degreeLeft));
+      //  double dx = speed*Math.cos(Math.toRadians(degreeLeft));
         helicopter.rotate(helicopter.getMyRotation()+degreeLeft);
-        helicopter.setTranslateX(helicopter.getTranslateX()-dx);
-        helicopter.setTranslateY(helicopter.getTranslateY()+dy);
+     //   helicopter.setTranslateX(helicopter.getTranslateX()-dx);
+     //   helicopter.setTranslateY(helicopter.getTranslateY()+dy);
 
 
      // helicopter.translate(helicopter.myTranslation.getX()-offset, helicopter.myTranslation.getY() );
    //     helicopter.translate(Math.cos(Math.toRadians(helicopter.myTranslation.getX())), Math.cos(Math.toRadians(helicopter.myTranslation.getY())) );
      //   ++degreeLeft;
     }
-    int degrees = -15;
+    int degreesRight = -15;
     public void HelicopterRightTurn() {
 
-        double dy = speed*Math.sin(Math.toRadians(degrees));
-        double dx = speed*Math.cos(Math.toRadians(degrees));
-        helicopter.rotate(helicopter.getMyRotation()+degrees);
-        helicopter.setTranslateX(helicopter.getTranslateX()+dx);
-        helicopter.setTranslateY(helicopter.getTranslateY()-dy);
+     //   double dy = speed*Math.sin(Math.toRadians(degreesRight));
+     //  double dx = speed*Math.cos(Math.toRadians(degreesRight));
+        helicopter.rotate(helicopter.getMyRotation()+degreesRight);
+      //  helicopter.setTranslateX(helicopter.getTranslateX()+dx);
+     // helicopter.setTranslateY(helicopter.getTranslateY()-dy);
 
 //        --degrees;
 
@@ -181,7 +181,15 @@ class Game extends Pane {
 
 
     public void HelicopterMoveUp() {
-        helicopter.translate(helicopter.myTranslation.getX(), helicopter.myTranslation.getY() + speed);
+    //    helicopter.translate(helicopter.myTranslation.getX(), helicopter.myTranslation.getY() + speed);
+        double angle = helicopter.getMyRotation();
+       double dy = speed*Math.sin(Math.toRadians(angle));
+     double dx = speed*Math.cos(Math.toRadians(angle));
+
+     helicopter.setTranslateX(helicopter.getTranslateX()-dx);
+     helicopter.setTranslateY(helicopter.getTranslateY()+dy);
+      //  helicopter.translate(helicopter.myTranslation.getX()+dx, helicopter.myTranslation.getY() + speed);
+
     }
     public void HelicopterMoveDown(){
         helicopter.translate(helicopter.myTranslation.getX(),helicopter.myTranslation.getY()-speed);
@@ -283,23 +291,7 @@ class Game extends Pane {
     }
 
 
-    //class Body extends GameObject{
-//    public Body(){
-//        super();
-//        Ellipse body = new Ellipse();
-//        body.setRadiusx(10);
-//        body.setRadiusY(10);
-//        body.setFill(MAGENTA);
-//        add(Body);
-//    }
-//}
-//class FireOval extends GameObject {
-//    public FireOval (){
-//        Body myBody =//
-//
-//        add(m)
-//    }
-//}
+
     class Cloud extends GameObject {
         // represents a cloud in the sky
         public Cloud() {
