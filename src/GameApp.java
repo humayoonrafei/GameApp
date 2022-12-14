@@ -171,6 +171,7 @@ class Game extends Pane {
         helicopter.setTranslateY(helicopter.getTranslateY()-dy);
 
 //        --degrees;
+
 //        helicopter.rotate(degrees);
 //        helicopter.translate(helicopter.myTranslation.getX()+speed, helicopter.myTranslation.getY());
 //        System.out.println("degrees "+degrees);
