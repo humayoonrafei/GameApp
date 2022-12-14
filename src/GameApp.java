@@ -9,6 +9,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
+import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Scale;
 import javafx.scene.transform.Translate;
@@ -111,7 +112,7 @@ class Game extends Pane {
 
     final static double APP_HEIGHT = 600;
 
-    static int HELICOPTER_FUEL = 25000;
+     int HELICOPTER_FUEL = 25000;
     Helicopter helicopter;
 
     public Game() {
@@ -138,6 +139,8 @@ class Game extends Pane {
 
         helicopter = new Helicopter(helipad.myTranslation.getX(), helipad.myTranslation.getY());
         this.getChildren().add(helicopter);
+
+
 
         // Function for turning the Helicopter to the left
 
@@ -384,6 +387,15 @@ class Game extends Pane {
 
             translate(x, y); // moves Helicopter object by x and y
             System.out.println(x + " " + y);
+
+
+            Text text = new Text(" ABC DE ");
+            text.setStroke(YELLOW);
+          //  text.setTranslateX(Helicoptercircle.getTranslateY()-40);
+            text.setRotate(-90);
+            text.setRotate(180);
+            this.getChildren().add(text);
+
 
 
         }

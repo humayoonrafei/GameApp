@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb197409-8108-47c9-aad4-bf0f5e0ed5e6" name="Changes" comment="The Helicopter goes Up and down too but the header just turns left and right">
+    <list default="true" id="bb197409-8108-47c9-aad4-bf0f5e0ed5e6" name="Changes" comment="Helicopter moving as a vector to the left and right .">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameApp.java" afterDir="false" />
     </list>
@@ -263,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670484374740</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Helicopter moving as a vector to the left and right .">
+      <created>1670983416357</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1670983416360</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -278,7 +285,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="recombined classes in on file" />
     <MESSAGE value="THe classes are created" />
     <MESSAGE value="Helipad created and located at the bottom centered in the miidle" />
     <MESSAGE value="Creating classes and analyzing each class watching the video on udemy for classes" />
@@ -303,7 +309,8 @@
     <MESSAGE value="Building the airplance to move left not finished" />
     <MESSAGE value="The Helicopter turns Right and Turns Left only" />
     <MESSAGE value="The Helicopter goes Up and down too but the header just turns left and right" />
-    <option name="LAST_COMMIT_MESSAGE" value="The Helicopter goes Up and down too but the header just turns left and right" />
+    <MESSAGE value="Helicopter moving as a vector to the left and right ." />
+    <option name="LAST_COMMIT_MESSAGE" value="Helicopter moving as a vector to the left and right ." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/GameApp$GameApp.ic" NAME="GameApp Coverage Results" MODIFIED="1669839401737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
