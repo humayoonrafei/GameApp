@@ -36,11 +36,12 @@ import static javafx.scene.paint.Color.*;
 
 
 /******
-//Class GameApp*/
+ //Class GameApp*/
 // At the highest level we have the class GameApp.
 // This class extends the JavaFX Application class.
 // The purpose of this class is to manage the high-level aspects of our application and setup and show the initial Scene for your application.
 // The GameApp class sets up all keyboard event handlers to invoke public methods in Game.
+
 /*******/
 public class GameApp extends Application {
 
@@ -56,8 +57,6 @@ public class GameApp extends Application {
         root.setFill(BLACK);
 
 
-
-
         // key Listeners
         //Game class methods get called on key press for instance left arrow key calls Ng.heliMoveLeft()
 
@@ -68,10 +67,10 @@ public class GameApp extends Application {
         primaryStage.setTitle("GameAPP");
         primaryStage.show();
 
-       root.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        root.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                switch(event.getCode()){
+                switch (event.getCode()) {
                     case LEFT:
                         Ng.HelicopterLeftTurn();
                         break;
@@ -79,7 +78,7 @@ public class GameApp extends Application {
                         Ng.HelicopterMoveDown();
                         break;
                     case UP:
-                        Ng.HelicopterMoveUp();
+                        Ng.Move();
                         break;
                     case RIGHT:
                         Ng.HelicopterRightTurn();
@@ -112,7 +111,7 @@ class Game extends Pane {
 
     final static double APP_HEIGHT = 600;
 
-     int HELICOPTER_FUEL = 25000;
+    int HELICOPTER_FUEL = 25000;
     Helicopter helicopter;
 
     public Game() {
@@ -138,37 +137,41 @@ class Game extends Pane {
         this.getChildren().add(cloud);
 
         helicopter = new Helicopter(helipad.myTranslation.getX(), helipad.myTranslation.getY());
-        this.getChildren().add(helicopter);
 
+        this.getChildren().add(helicopter);
 
 
         // Function for turning the Helicopter to the left
 
 
     }
+
     int speed = 4;
-    int degreeLeft= 15;
+    int degreeLeft = 15;
+
     public void HelicopterLeftTurn() {
 
-    //    double dy = speed*Math.sin(Math.toRadians(degreeLeft));
-      //  double dx = speed*Math.cos(Math.toRadians(degreeLeft));
-        helicopter.rotate(helicopter.getMyRotation()+degreeLeft);
-     //   helicopter.setTranslateX(helicopter.getTranslateX()-dx);
-     //   helicopter.setTranslateY(helicopter.getTranslateY()+dy);
+        //    double dy = speed*Math.sin(Math.toRadians(degreeLeft));
+        //  double dx = speed*Math.cos(Math.toRadians(degreeLeft));
+        helicopter.rotate(helicopter.getMyRotation() + degreeLeft);
+        //   helicopter.setTranslateX(helicopter.getTranslateX()-dx);
+        //   helicopter.setTranslateY(helicopter.getTranslateY()+dy);
 
 
-     // helicopter.translate(helicopter.myTranslation.getX()-offset, helicopter.myTranslation.getY() );
-   //     helicopter.translate(Math.cos(Math.toRadians(helicopter.myTranslation.getX())), Math.cos(Math.toRadians(helicopter.myTranslation.getY())) );
-     //   ++degreeLeft;
+        // helicopter.translate(helicopter.myTranslation.getX()-offset, helicopter.myTranslation.getY() );
+        //     helicopter.translate(Math.cos(Math.toRadians(helicopter.myTranslation.getX())), Math.cos(Math.toRadians(helicopter.myTranslation.getY())) );
+        //   ++degreeLeft;
     }
+
     int degreesRight = -15;
+
     public void HelicopterRightTurn() {
 
-     //   double dy = speed*Math.sin(Math.toRadians(degreesRight));
-     //  double dx = speed*Math.cos(Math.toRadians(degreesRight));
-        helicopter.rotate(helicopter.getMyRotation()+degreesRight);
-      //  helicopter.setTranslateX(helicopter.getTranslateX()+dx);
-     // helicopter.setTranslateY(helicopter.getTranslateY()-dy);
+        //   double dy = speed*Math.sin(Math.toRadians(degreesRight));
+        //  double dx = speed*Math.cos(Math.toRadians(degreesRight));
+        helicopter.rotate(helicopter.getMyRotation() + degreesRight);
+        //  helicopter.setTranslateX(helicopter.getTranslateX()+dx);
+        // helicopter.setTranslateY(helicopter.getTranslateY()-dy);
 
 //        --degrees;
 
@@ -180,19 +183,26 @@ class Game extends Pane {
     }
 
 
-    public void HelicopterMoveUp() {
-    //    helicopter.translate(helicopter.myTranslation.getX(), helicopter.myTranslation.getY() + speed);
+    public void Move() {
+        //    helicopter.translate(helicopter.myTranslation.getX(), helicopter.myTranslation.getY() + speed);
         double angle = helicopter.getMyRotation();
-       double dy = speed*Math.sin(Math.toRadians(angle));
-     double dx = speed*Math.cos(Math.toRadians(angle));
+        double dy = speed * Math.sin(Math.toRadians(angle));
+        double dx = speed * Math.cos(Math.toRadians(angle));
 
-     helicopter.setTranslateX(helicopter.getTranslateX()-dx);
-     helicopter.setTranslateY(helicopter.getTranslateY()+dy);
-      //  helicopter.translate(helicopter.myTranslation.getX()+dx, helicopter.myTranslation.getY() + speed);
+        helicopter.setTranslateX(helicopter.getTranslateX() + dx);
+        helicopter.setTranslateY(helicopter.getTranslateY() + dy);
+        //  helicopter.translate(helicopter.myTranslation.getX()+dx, helicopter.myTranslation.getY() + speed);
 
     }
-    public void HelicopterMoveDown(){
-        helicopter.translate(helicopter.myTranslation.getX(),helicopter.myTranslation.getY()-speed);
+
+    public void HelicopterMoveDown() {
+        double angle = helicopter.getMyRotation();
+        double dy = speed * Math.sin(Math.toRadians(angle));
+        double dx = speed * Math.cos(Math.toRadians(angle));
+
+        helicopter.setTranslateX(helicopter.getTranslateX() - dx);
+        helicopter.setTranslateY(helicopter.getTranslateY() - dy);
+
     }
 
 ///
@@ -291,7 +301,6 @@ class Game extends Pane {
     }
 
 
-
     class Cloud extends GameObject {
         // represents a cloud in the sky
         public Cloud() {
@@ -355,7 +364,9 @@ class Game extends Pane {
 
 
             Circle Helicoptercircle = new Circle(Helicopeter_Radius);
+
             Helicoptercircle.setFill(YELLOW);
+
             //Image helicopterImage = new Image("/Users/hqrafei/Documents/projects/GameApp/Pictures/Helicopter.png");
 
             //ImageView iv1 = new ImageView();
@@ -366,28 +377,36 @@ class Game extends Pane {
 
             // Helicoptercircle.setTranslateX(Game.APP_WIDTH/2);
             //Helicoptercircle.setTranslateY((Game.APP_HEIGHT-Helicopeter_Radius)/4.59);
-
+            translate(x, y); // moves Helicopter object by x and y
             Line line = new Line();
             line.setStartX(Helicoptercircle.getTranslateX());
             line.setStartY(Helicoptercircle.getTranslateY());
-            line.setEndX(Helicoptercircle.getTranslateX());
-            line.setEndY((Helicoptercircle.getTranslateY() + 16));
+            line.setEndX(Helicoptercircle.getTranslateX()+16);
+            line.setEndY((Helicoptercircle.getTranslateY() ));
             line.setStroke(YELLOW);
             line.setStrokeWidth(3);
+
 
             this.getChildren().add(line);
 
 
-            translate(x, y); // moves Helicopter object by x and y
+
+
             System.out.println(x + " " + y);
 
 
             Text text = new Text(" ABC DE ");
             text.setStroke(YELLOW);
-          //
+
+            text.setScaleY(-1);
+
+            text.setTranslateY(-15);
+            text.setTranslateX(-30);
+
+            ;
+            //
 
             this.getChildren().add(text);
-
 
 
         }
