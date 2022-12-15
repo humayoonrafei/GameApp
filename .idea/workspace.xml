@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb197409-8108-47c9-aad4-bf0f5e0ed5e6" name="Changes" comment="left to 90 degree is fine to move but for the first quadrant it moves the opposite way .">
+    <list default="true" id="bb197409-8108-47c9-aad4-bf0f5e0ed5e6" name="Changes" comment="Improvment : &#10;1- The Helicopter is going forword &#10;2- Any Angle which the helicopter is pointing to &#10;3- Reverses back on the same angle &#10;&#10;Challangle:---------&#10;&#10;1- when the Helicopter is sitting it is facing towords the right Not Up &#10;2- The Text is also sitting on the back side but when it moves the text is on its side .">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameApp.java" afterDir="false" />
     </list>
@@ -298,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670995557993</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Improvment : &#10;1- The Helicopter is going forword &#10;2- Any Angle which the helicopter is pointing to &#10;3- Reverses back on the same angle &#10;&#10;Challangle:---------&#10;&#10;1- when the Helicopter is sitting it is facing towords the right Not Up &#10;2- The Text is also sitting on the back side but when it moves the text is on its side .">
+      <created>1671069043005</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1671069043005</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -313,7 +320,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="updating classes" />
     <MESSAGE value="trying setters and getters" />
     <MESSAGE value="fliying helicopter" />
     <MESSAGE value="helicopter class written still needs to be completed" />
@@ -338,7 +344,8 @@
     <MESSAGE value="Added the rotation of the to round &#10;--- next -- &#10;Moving to where the helicopter header is facing to" />
     <MESSAGE value="Added the rotation again to the Helicopter &#10;--- next -- &#10;Moving to where the helicopter header is facing to" />
     <MESSAGE value="left to 90 degree is fine to move but for the first quadrant it moves the opposite way ." />
-    <option name="LAST_COMMIT_MESSAGE" value="left to 90 degree is fine to move but for the first quadrant it moves the opposite way ." />
+    <MESSAGE value="Improvment : &#10;1- The Helicopter is going forword &#10;2- Any Angle which the helicopter is pointing to &#10;3- Reverses back on the same angle &#10;&#10;Challangle:---------&#10;&#10;1- when the Helicopter is sitting it is facing towords the right Not Up &#10;2- The Text is also sitting on the back side but when it moves the text is on its side ." />
+    <option name="LAST_COMMIT_MESSAGE" value="Improvment : &#10;1- The Helicopter is going forword &#10;2- Any Angle which the helicopter is pointing to &#10;3- Reverses back on the same angle &#10;&#10;Challangle:---------&#10;&#10;1- when the Helicopter is sitting it is facing towords the right Not Up &#10;2- The Text is also sitting on the back side but when it moves the text is on its side ." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/GameApp$GameApp.ic" NAME="GameApp Coverage Results" MODIFIED="1669839401737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

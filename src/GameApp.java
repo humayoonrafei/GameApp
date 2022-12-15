@@ -186,22 +186,21 @@ class Game extends Pane {
     public void Move() {
         //    helicopter.translate(helicopter.myTranslation.getX(), helicopter.myTranslation.getY() + speed);
         double angle = helicopter.getMyRotation();
-        double dy = speed * Math.sin(Math.toRadians(angle));
-        double dx = speed * Math.cos(Math.toRadians(angle));
-
-        helicopter.setTranslateX(helicopter.getTranslateX() + dx);
+        double dy = speed * Math.cos(Math.toRadians(angle));
+        double dx = speed * Math.sin(Math.toRadians(angle));
         helicopter.setTranslateY(helicopter.getTranslateY() + dy);
+        helicopter.setTranslateX(helicopter.getTranslateX() - dx);
+
         //  helicopter.translate(helicopter.myTranslation.getX()+dx, helicopter.myTranslation.getY() + speed);
 
     }
 
     public void HelicopterMoveDown() {
         double angle = helicopter.getMyRotation();
-        double dy = speed * Math.sin(Math.toRadians(angle));
-        double dx = speed * Math.cos(Math.toRadians(angle));
-
-        helicopter.setTranslateX(helicopter.getTranslateX() - dx);
+        double dy = speed * Math.cos(Math.toRadians(angle));
+        double dx = speed * Math.sin(Math.toRadians(angle));
         helicopter.setTranslateY(helicopter.getTranslateY() - dy);
+        helicopter.setTranslateX(helicopter.getTranslateX() + dx);
 
     }
 
@@ -381,8 +380,8 @@ class Game extends Pane {
             Line line = new Line();
             line.setStartX(Helicoptercircle.getTranslateX());
             line.setStartY(Helicoptercircle.getTranslateY());
-            line.setEndX(Helicoptercircle.getTranslateX()+16);
-            line.setEndY((Helicoptercircle.getTranslateY() ));
+            line.setEndX(Helicoptercircle.getTranslateX());
+            line.setEndY((Helicoptercircle.getTranslateY() +16));
             line.setStroke(YELLOW);
             line.setStrokeWidth(3);
 
